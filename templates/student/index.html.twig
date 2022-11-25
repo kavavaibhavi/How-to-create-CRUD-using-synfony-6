@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student Form{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Student Data</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-primary" href="{{ path('student_create') }}">Create New</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>City</th>
+                        <th>Stream</th>
+                        <th>Action</th>
+                    </tr>
+
+                        {% for student in students %}
+                            <tr>
+                                <td>{{ student.id }}</td>
+                                <td>{{ student.first }}</td>
+                                <td>{{ student.lastName }}</td>
+                                <td>{{ student.gender }}</td>
+                                <td>{{ student.city }}</td>
+                                <td>
+                                    {% for stream in student.stream %}
+                                        {{ stream }}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-success" href="{{ path('student_edit', {'id': student.id}) }}">Edit</a>
+                                    <a class="btn btn-outline-danger" href="{{ path('student_delete', {'id': student.id}) }}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

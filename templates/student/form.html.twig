@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'foundation_5_layout.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        <div class="container">
+            <div class="mt-4">
+                <div class="form-group">
+                    {{ form_row(form.first,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form_row(form.last_name,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form_row(form.gender,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form_row(form.city,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form_row(form.stream,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <br>
+
+                {% if app.request.pathinfo == '/create' %}
+
+                    <div>
+                        <button class="btn btn-outline-success">Submit</button>
+                    </div>
+                {% else %}
+                    <div>
+                        <button class="btn btn-outline-success">Update</button>
+                    </div>
+                {% endif %}
+
+{#                {{  dump( app.request.pathinfo )}}#}
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}
