@@ -6,6 +6,8 @@ step:1 Create a new project
       
       ii. cd project_name
       
+      iii. symfony server:start
+      
 stpe:2 Download Doctrine/ORM Pack
 
       composer require symfony/orm-pack
